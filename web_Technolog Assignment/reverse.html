@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    function reverseWords(sentence) {
+  const words = sentence.split(' ');
+  const reversedWords = [];
+  for (const word of words) {
+    const reversedWord = word.split('').reverse().join('');
+    reversedWords.push(reversedWord);
+  }
+  const reversedSentence = reversedWords.join(' ');
+
+  return reversedSentence;
+}
+
+const inputSentence = "This is a sunny day";
+const reversedSentence = reverseWords(inputSentence);
+console.log(reversedSentence); 
+
+</script>
+</body>
+</html>

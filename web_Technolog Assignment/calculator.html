@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<script src="calculator.js"></script>
+	<link rel="stylesheet" href="./calci.css">
+</head>
+<body>
+	<center>
+	<h1>Calculator</h1>
+	<div style="border: 1px solid black; height: 400px; width: 300px; background-color:rgb(2, 11, 20); border-radius: 50px;">
+	<div style="margin-top: 30px ; "><input type="text" id="input" readonly></div>
+	<div >
+	<br>
+    <button onclick="deleteInput()"><p style="  height: 10px; width: 15px;">D</p></button>
+    <button onclick="addInput('.')"><p style="  height: 10px; width: 15px;">.</p></button>
+    <button onclick="addInput('%')"><p style="  height: 10px; width: 15px;">%</p></button>
+	<button onclick="clearInput()"><p style="  height: 10px; width: 15px;">AC</p></button>
+</div>
+	<div><br>
+	<button onclick="addInput('9')"><p style="  height: 10px; width: 15px;">9</p></button>
+	<button onclick="addInput('8')"><p style="  height: 10px; width: 15px;">8</p></button>
+	<button onclick="addInput('7')"><p style="  height: 10px; width: 15px;">7</p></button>
+	<button onclick="addInput('+')"><p style="  height: 10px; width: 15px;">+</p></button></div>
+	<div><br>
+	<button onclick="addInput('6')"><p style="  height: 10px; width: 15px;">6</p></button>
+	<button onclick="addInput('5')"><p style="  height: 10px; width: 15px;">5</p></button>
+	<button onclick="addInput('4')"><p style="  height: 10px; width: 15px;">4</p></button>
+	<button onclick="addInput('-')"><p style="  height: 10px; width: 15px;">-</p></button></div>
+	<div><br>
+	<button onclick="addInput('3')"><p style="  height: 10px; width: 15px;">3</p></button>
+	<button onclick="addInput('2')"><p style="  height: 10px; width: 15px;">2</p></button>
+	<button onclick="addInput('1')"><p style="  height: 10px; width: 15px;">1</p></button>
+    <button onclick="addInput('/')"><p style="  height: 10px; width: 15px;">/</p></button>
+   
+</div>
+	<div><br>
+	<button onclick="addInput('00')"><p style="  height: 10px; width: 15px;">00</p></button>
+	<button onclick="addInput('0')"><p style="  height: 10px; width: 15px;">0</p></button>
+    <button onclick="calculate()"><p style="  height: 10px; width: 15px;">=</p></button>
+    <button onclick="addInput('*')"><p style="  height: 10px; width: 15px;">x</p></button>
+</div></div>
+</center>
+
+    <script>
+
+let input = document.getElementById('input');
+
+function addInput(value) {
+    input.value += value;
+}
+
+function clearInput() {
+    input.value = '';
+}  
+
+    function deleteInput() {
+		input.value=input.value.substring(0, input.value.length - 1);
+	}
+            
+        
+function calculate() {
+    let result = eval(input.value);
+    input.value = result;
+}
+    </script>
+</body>
+</html>

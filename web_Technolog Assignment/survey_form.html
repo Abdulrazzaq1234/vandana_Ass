@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+    <style>
+        .form-container {
+            width: 400px;
+            margin: 0 auto   ;
+        
+        }
+    </style>
+</head>
+<body>
+    <fieldset  style="background-color: blue;">
+    <div class="form-container">
+        <center><legend style="color: white;"><h2>Customer Survey Form</h2></legend></center>
+        <form id="surveyForm">
+            <table style="border: 1px solid black;  background-color: white;height: 200px; width: 400px;"cellspacing="30px" align="center" >
+           <tr>
+            <td ><label for="firstName">First Name:</label></td> 
+         <td > <input type="text" id="firstName" required></td>
+          </tr> 
+          <tr>
+           <td> <label for="lastName">Last Name:</label></td>
+           <td> <input type="text" id="lastName" required></td>
+         </tr>
+         <tr>
+           <td> <label for="dob">Date of Birth:</label> </td>  
+             <td><input type="date" id="dob" required>  </td></tr>
+         <tr>
+           <td> <label for="country">Country:</label> </td>
+             <td><select id="country" required>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="uk">UK</option>
+                <!-- Add more options as needed -->
+            </select> <br></td>
+          </tr>
+          <tr>
+            <td><label>Gender:</label>
+            <input type="checkbox" id="male" name="gender" value="Male"> 
+            <label for="male">Male</label>  </td>
+            <td><input type="checkbox" id="female" name="gender" value="Female">
+            <label for="female">Female</label><br></td>
+            </tr>
+             
+            <tr>
+            <td><label for="profession">Profession:</label> </td>
+             <td><input type="text" id="profession" required><br> </td> <br>
+             </tr>
+             <tr>
+            <td><label for="email">Email:</label>  </td>
+           <td> <input type="email" id="email" required><br> </td>
+            </tr> <br>
+
+            <tr>
+           <td> <label for="mobile">Mobile Number:</label>  </td>
+            <td> <input type="tel" id="mobile" required><br>  </td>
+      </tr> 
+             <tr>
+                <td><button type="button" id="submitBtn">Submit</button>  </td>
+              <td><button type="button" id="resetBtn">Reset</button>   </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+    </fieldset>
+    <script>
+        // Add JavaScript to handle form submission and reset
+        document.getElementById("submitBtn").addEventListener("click", function () {
+            // Validate the form fields
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const gender = document.querySelectorAll('input[name="gender"]:checked');
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+
+            // Check if all fields are filled
+            if (firstName && lastName && dob && country && gender.length > 0 && profession && email && mobile) {
+                // Build and display the popup message
+                const popupMessage = `First Name: ${firstName}\nLast Name: ${lastName}\nDate of Birth: ${dob}\nCountry: ${country}\nGender: ${[...gender].map(el => el.value).join(", ")}\nProfession: ${profession}\nEmail: ${email}\nMobile Number: ${mobile}`;
+                alert(popupMessage);
+
+                // Reset the form
+                document.getElementById("surveyForm").reset();
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        });
+
+        document.getElementById("resetBtn").addEventListener("click", function () {
+            // Reset the form
+            document.getElementById("surveyForm").reset();
+        });
+    </script>
+</body>
+</html>
