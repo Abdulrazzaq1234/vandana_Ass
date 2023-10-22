@@ -8,21 +8,40 @@
 <body>
     
     <script>
-    function reverseWords(sentence) {
-  const words = sentence.split(' ');
-  const reversedWords = [];
-  for (const word of words) {
-    const reversedWord = word.split('').reverse().join('');
-    reversedWords.push(reversedWord);
-  }
-  const reversedSentence = reversedWords.join(' ');
-
-  return reversedSentence;
+    function reverseWordsInSentence(sentence) {
+    let reversedSentence = "";
+    let word = "";
+    for (let i = 0; i < sentence.length; i++) {
+        if (sentence[i] === " " || i === sentence.length - 1) {
+            if (i === sentence.length - 1) {
+                word = word + sentence[i];
+            }
+            let reversedWord = reverseWord(word);
+            reversedSentence = reversedSentence + reversedWord;
+            if (i !== sentence.length - 1) {
+                reversedSentence = reversedSentence + " ";
+            }
+            word = "";
+        } else {
+            word = word + sentence[i];
+        }
+    }
+    return reversedSentence;
 }
 
+function reverseWord(word) {
+    let reversed = "";
+    for (let i = word.length - 1; i >= 0; i--) {
+        reversed += word[i];
+    }
+    return reversed;
+}
+
+// const inputSentence = prompt("Enter a sentence:");
 const inputSentence = "This is a sunny day";
-const reversedSentence = reverseWords(inputSentence);
-console.log(reversedSentence); 
+const reversedSentence = reverseWordsInSentence(inputSentence);
+
+console.log("Reversed Sentence: " + reversedSentence);
 
 </script>
 </body>
